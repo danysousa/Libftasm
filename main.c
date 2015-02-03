@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/03 18:30:06 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/03 19:12:35 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <strings.h>
 
 void	ft_bzero(void *s, size_t len);
+int		ft_islapha(int i);
 
 int main()
 {
@@ -52,5 +53,12 @@ int main()
 
 	printf("\n1 : %s --- 2 : %s\n", str1, str2);
 
+	i = 0;
+	while ( i <= 127 )
+	{
+		if (ft_isalpha(i) != isalpha(i))
+			printf("OMG--------------ERROR with isalpha\n");
+		i++;
+	}
 	return 0;
 }
