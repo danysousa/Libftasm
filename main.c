@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/04 17:04:50 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/04 17:08:45 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		ft_isalnum(int i);
 int		ft_isascii(int i);
 int		ft_isprint(int i);
 int		ft_toupper(int i);
+int		ft_tolower(int i);
 
 int main()
 {
@@ -112,5 +113,15 @@ int main()
 		i++;
 	}
 	printf("%d Error found -----> toupper\n", error);
+
+	i = -50;
+	error = 0;
+	while ( i <= 250 )
+	{
+		if (ft_tolower(i) != tolower(i))
+			error++;
+		i++;
+	}
+	printf("%d Error found -----> tolower\n", error);
 	return 0;
 }
