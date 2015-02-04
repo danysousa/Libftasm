@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/04 13:50:21 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/04 14:58:11 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 int		ft_isdigit(int i);
 void	ft_bzero(void *s, size_t len);
-int		ft_isalapha(int i);
+int		ft_isalpha(int i);
+int		ft_isalnum(int i);
 
 int main()
 {
@@ -69,8 +70,18 @@ int main()
 	{
 		if (ft_isdigit(i) != isdigit(i))
 			printf("OMG--------------ERROR\n");
-		else
-			printf("%d\n", isalpha(i));
+		// else
+		// 	printf("%d\n", isalpha(i));
+		i++;
+	}
+
+	i = 0;
+	while ( i <= 127 )
+	{
+		if (ft_isalnum(i) != isalnum(i))
+			printf("OMG--------------ERROR\n");
+		// else
+		// 	printf("%d\n", isalpha(i));
 		i++;
 	}
 
