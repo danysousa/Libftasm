@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/04 17:08:45 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/04 17:39:24 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int		ft_isascii(int i);
 int		ft_isprint(int i);
 int		ft_toupper(int i);
 int		ft_tolower(int i);
+int		ft_strlen(char *str);
+int		ft_puts(char *str);
 
 int main()
 {
@@ -30,18 +32,28 @@ int main()
 	int			i;
 	int			error;
 
-	str1 = malloc(sizeof(char) * 10);
-	str2 = malloc(sizeof(char) * 10);
+	str1 = malloc(sizeof(char) * 9);
+	str2 = malloc(sizeof(char) * 9);
 	i = 49;
-	while (i < 49 + 10)
+	while (i < 49 + 9)
 	{
 		str1[i - 49] = (char)i;
 		str2[i - 49] = (char)i;
 		i++;
 	}
 
-	ft_bzero((void *)str1, 10);
-	bzero((void *)str2, 10);
+	error = 0;
+	if ( ft_strlen(str1) != strlen(str1) )
+		error++;
+
+	printf("%d Error found -----> strlen\n", error);
+
+	ft_puts(str1);
+	ft_puts("\n");
+	puts(str1);
+
+	ft_bzero((void *)str1, 5);
+	bzero((void *)str2, 5);
 
 	error = 0;
 	i = 0;
