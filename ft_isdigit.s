@@ -1,9 +1,15 @@
 section .text
+extern _ft_isascii
 
 global _ft_isdigit
 
 _ft_isdigit:
+	call _ft_isascii
+	cmp rax, 0
+	je isnt
+
 	mov r10, rdi
+
 
 	cmp r10, 48
 	jl isnt

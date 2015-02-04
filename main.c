@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/04 14:58:11 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/04 15:07:18 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 #include <stdio.h>
 #include <strings.h>
 
-int		ft_isdigit(int i);
 void	ft_bzero(void *s, size_t len);
+int		ft_isdigit(int i);
 int		ft_isalpha(int i);
 int		ft_isalnum(int i);
+int		ft_isascii(int i);
 
 int main()
 {
@@ -55,8 +56,8 @@ int main()
 
 	printf("\n1 : %s --- 2 : %s\n", str1, str2);
 
-	i = 0;
-	while ( i <= 127 )
+	i = -70;
+	while ( i <= 290 )
 	{
 		if (ft_isalpha(i) != isalpha(i))
 			printf("OMG--------------ERROR\n");
@@ -65,8 +66,8 @@ int main()
 		i++;
 	}
 
-	i = 0;
-	while ( i <= 127 )
+	i = -70;
+	while ( i <= 290 )
 	{
 		if (ft_isdigit(i) != isdigit(i))
 			printf("OMG--------------ERROR\n");
@@ -75,13 +76,23 @@ int main()
 		i++;
 	}
 
-	i = 0;
-	while ( i <= 127 )
+	i = -70;
+	while ( i <= 290 )
 	{
 		if (ft_isalnum(i) != isalnum(i))
 			printf("OMG--------------ERROR\n");
 		// else
 		// 	printf("%d\n", isalpha(i));
+		i++;
+	}
+
+	i = -50;
+	while ( i <= 250 )
+	{
+		if (ft_isascii(i) != isascii(i))
+			printf("OMG--------------ERROR\n");
+		// else
+		// 	printf("%d\n", isascii(i));
 		i++;
 	}
 

@@ -1,8 +1,13 @@
 section .text
+extern _ft_isascii
 
 global _ft_isalpha
 
 _ft_isalpha:
+	call _ft_isascii
+	cmp rax, 0
+	je isnt
+
 	mov r10, rdi
 
 	cmp r10, 65
