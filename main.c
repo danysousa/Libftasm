@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/03 19:12:35 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/04 13:50:21 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 #include <stdio.h>
 #include <strings.h>
 
+int		ft_isdigit(int i);
 void	ft_bzero(void *s, size_t len);
-int		ft_islapha(int i);
+int		ft_isalapha(int i);
 
 int main()
 {
@@ -57,8 +58,21 @@ int main()
 	while ( i <= 127 )
 	{
 		if (ft_isalpha(i) != isalpha(i))
-			printf("OMG--------------ERROR with isalpha\n");
+			printf("OMG--------------ERROR\n");
+		// else
+		// 	printf("%d\n", isalpha(i));
 		i++;
 	}
+
+	i = 0;
+	while ( i <= 127 )
+	{
+		if (ft_isdigit(i) != isdigit(i))
+			printf("OMG--------------ERROR\n");
+		else
+			printf("%d\n", isalpha(i));
+		i++;
+	}
+
 	return 0;
 }
