@@ -4,6 +4,8 @@ global _ft_strlen
 
 _ft_strlen:
 	mov r10, 0
+	cmp rdi, 0
+	je end
 	jmp strlen_loop
 
 strlen_loop:

@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/04 17:39:24 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/05 15:53:21 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,17 @@ int		ft_toupper(int i);
 int		ft_tolower(int i);
 int		ft_strlen(char *str);
 int		ft_puts(char *str);
+char	*ft_strcat(char *dest, char *str);
 
 int main()
 {
 	char		*str1;
 	char		*str2;
+	char		*test;
 	int			i;
 	int			error;
 
+	test = malloc(sizeof(char) * 50);
 	str1 = malloc(sizeof(char) * 9);
 	str2 = malloc(sizeof(char) * 9);
 	i = 49;
@@ -39,8 +42,13 @@ int main()
 	{
 		str1[i - 49] = (char)i;
 		str2[i - 49] = (char)i;
+		test[i - 49] = (char)i;
 		i++;
 	}
+
+	printf("%s\n", test);
+	test = ft_strcat(test, str1);
+	printf("%s\n", test);
 
 	error = 0;
 	if ( ft_strlen(str1) != strlen(str1) )
