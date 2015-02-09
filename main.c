@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/09 17:56:17 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/09 18:12:13 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		ft_tolower(int i);
 int		ft_strlen(char *str);
 int		ft_puts(char *str);
 char	*ft_strcat(char *dest, char *str);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 int main()
 {
@@ -48,11 +49,10 @@ int main()
 
 	printf("%s\n", test);
 	test = ft_strcat(test, str1);
-	printf("%s\n", test);
 
-	write(1,test, 18);
-	write(1,"\n", 1);
+	test = ft_memcpy(test, "aaass", 3);
 
+puts(test);
 	error = 0;
 	if ( ft_strlen(str1) != strlen(str1) )
 		error++;
