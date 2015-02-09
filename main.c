@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/09 17:00:53 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/09 17:56:17 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int		ft_tolower(int i);
 int		ft_strlen(char *str);
 int		ft_puts(char *str);
 char	*ft_strcat(char *dest, char *str);
-void	*ft_memset(void *dest, char c, size_t n);
 
 int main()
 {
@@ -51,7 +50,6 @@ int main()
 	test = ft_strcat(test, str1);
 	printf("%s\n", test);
 
-	ft_memset(test, 'X', 0);
 	write(1,test, 18);
 	write(1,"\n", 1);
 
