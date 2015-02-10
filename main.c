@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/09 18:12:13 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/10 16:28:03 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		ft_strlen(char *str);
 int		ft_puts(char *str);
 char	*ft_strcat(char *dest, char *str);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memset(void *str, int c, size_t n);
 
 int main()
 {
@@ -34,6 +35,15 @@ int main()
 	char		*test;
 	int			i;
 	int			error;
+
+
+	char		str[50];
+
+	strcpy(str,"This is string.h library function");
+	puts(str);
+
+	ft_memset(str,'$',7);
+	puts(str);
 
 	test = malloc(sizeof(char) * 50);
 	str1 = malloc(sizeof(char) * 9);
@@ -49,13 +59,15 @@ int main()
 
 	printf("%s\n", test);
 	test = ft_strcat(test, str1);
+	test = ft_memcpy(test, "aaass", 5);
+	puts(test);
 
-	test = ft_memcpy(test, "aaass", 3);
-
-puts(test);
 	error = 0;
 	if ( ft_strlen(str1) != strlen(str1) )
+	{
+		printf("ft: %d != %d\n", ft_strlen(str1), strlen(str1) );
 		error++;
+	}
 
 	printf("%d Error found -----> strlen\n", error);
 
