@@ -3,6 +3,8 @@ section .text
 global _ft_isprint
 
 _ft_isprint:
+	xor al, al
+
 	mov r10, rdi
 
 	cmp r10, 32

@@ -3,6 +3,8 @@ global _ft_memcpy
 
 _ft_memcpy:
 	xor al, al
+
+	xor al, al
 	mov rcx, rdx
 	mov r8, rdi
 

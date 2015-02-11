@@ -4,6 +4,8 @@ extern _ft_strlen
 global _ft_puts
 
 _ft_puts:
+	xor al, al
+
 	call _ft_strlen
 	mov r10, rdi
 	mov r11, rax

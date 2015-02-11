@@ -2,6 +2,8 @@ section .text
 global _ft_bzero
 
 _ft_bzero:
+	xor al, al
+
 	mov r9, 0
 	jmp loop_bzero
 

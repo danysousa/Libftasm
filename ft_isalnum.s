@@ -7,6 +7,8 @@ section .text
 global _ft_isalnum
 
 _ft_isalnum:
+	xor al, al
+
 	call _ft_isascii
 	cmp rax, 0
 	je isnt

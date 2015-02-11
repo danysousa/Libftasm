@@ -3,6 +3,8 @@ section .text
 global _ft_toupper
 
 _ft_toupper:
+	xor al, al
+
 	mov r10, rdi
 
 	cmp r10, 97

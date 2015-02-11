@@ -4,31 +4,29 @@ extern _ft_strlen
 global _ft_strcat
 
 _ft_strcat:
-	cmp rsi, 0
-	je end
-
-	mov r10, 0
-	mov r11, 0
+	xor al, al
+	mov r9, rdi
 
 first_loop:
-	cmp byte [rdi + r10], 0
+	cmp byte [rdi], 0
 	je second_loop
 
-	inc r10
+	inc rdi
 
 	jmp first_loop
 
 second_loop:
-	cmp byte [rsi + r11], 0
+	cmp byte [rsi], 0
 	je end
 
-	mov r12, [rsi + r11]
-	mov [rdi + r10], r12
-	inc r10
-	inc r11
+	mov rax, [rsi]
+	mov [rdi], al
+
+	inc rsi
+	inc rdi
 
 	jmp second_loop
 end:
-	mov byte [rdi + r10], 0
-	mov rax, rdi
+	mov byte [rdi], 0
+	mov rax, r9
 	ret

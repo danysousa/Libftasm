@@ -3,6 +3,8 @@ section .text
 global _ft_tolower
 
 _ft_tolower:
+	xor al, al
+
 	mov r10, rdi
 
 	cmp r10, 65

@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/10 16:28:03 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/11 17:29:38 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_puts(char *str);
 char	*ft_strcat(char *dest, char *str);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memset(void *str, int c, size_t n);
+char	*ft_strdup(const char *s);
 
 int main()
 {
@@ -37,9 +38,9 @@ int main()
 	int			error;
 
 
-	char		str[50];
+	char		*str;
 
-	strcpy(str,"This is string.h library function");
+	str = ft_strdup("This is string.h library function");
 	puts(str);
 
 	ft_memset(str,'$',7);
@@ -59,6 +60,9 @@ int main()
 
 	printf("%s\n", test);
 	test = ft_strcat(test, str1);
+	printf("%s\n", test);
+	// test = strcat(test, str1);
+	// printf("%s\n", test);
 	test = ft_memcpy(test, "aaass", 5);
 	puts(test);
 

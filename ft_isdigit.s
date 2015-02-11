@@ -4,6 +4,8 @@ extern _ft_isascii
 global _ft_isdigit
 
 _ft_isdigit:
+	xor al, al
+
 	call _ft_isascii
 	cmp rax, 0
 	je isnt

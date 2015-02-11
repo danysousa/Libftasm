@@ -3,6 +3,8 @@ section .text
 global _ft_isascii
 
 _ft_isascii:
+	xor al, al
+
 	mov r10, rdi
 
 	cmp r10, 0
