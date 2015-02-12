@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/12 14:12:44 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/12 17:46:37 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <strings.h>
 #include "libfts.h"
+#include <fcntl.h>
 
 int main()
 {
@@ -22,6 +23,7 @@ int main()
 	char		*test;
 	int			i;
 	int			error;
+	int			fd;
 
 
 	char		*str;
@@ -30,7 +32,6 @@ int main()
 	ft_puts(str);
 
 	ft_memset(str,'$',7);
-	// puts(str);
 
 	test = malloc(sizeof(char) * 50);
 	str1 = malloc(sizeof(char) * 9);
@@ -148,5 +149,14 @@ int main()
 		i++;
 	}
 	printf("%d Error found -----> tolower\n", error);
+
+
+	fd = open("mytest", O_RDONLY);
+	ft_cat(fd);
+
+	close(fd);
+
+	ft_cat(4651);
+	// ft_cat(0);
 	return 0;
 }

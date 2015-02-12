@@ -20,8 +20,8 @@
 #define BOOL(_e)        (!!_e)
 
 
-#define I_MIN -2000000
-#define I_MAX 2000000
+#define I_MIN -20
+#define I_MAX 500
 
 #define RANDSTR_MAXSZ 500
 
