@@ -10,21 +10,20 @@ _ft_strdup:
 	mov r13, rdi
 
 	call _ft_strlen
+	inc rax
 	mov rdi, rax
-	inc rdi
 	mov r14, rax
 
 	call _malloc
 	test rax, rax
 	je return
 
-	mov rdi, rax
 	mov rsi, r13
+	mov rdi, rax
 	mov rcx, r14
 	cld
 	rep movsb
 
-	mov rax, r13
 	ret
 
 return:

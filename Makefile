@@ -6,7 +6,7 @@
 #    By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/02/04 15:12:03 by dsousa            #+#    #+#              #
-#    Updated: 2015/02/11 14:09:08 by dsousa           ###   ########.fr        #
+#    Updated: 2015/02/12 13:57:00 by dsousa           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ fclean:		clean
 re:			fclean all
 
 test:		re
-	@gcc $(NAME) main.c
+	@gcc -Wl,-no_pie $(NAME) main.c
 	@./a.out
 
 

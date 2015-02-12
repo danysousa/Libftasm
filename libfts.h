@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 14:06:37 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/11 14:07:19 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/12 13:43:42 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ int		ft_isprint(int i);
 int		ft_toupper(int i);
 int		ft_tolower(int i);
 int		ft_strlen(char *str);
-int		ft_puts(char *str);
+int		ft_puts(const char *str);
 char	*ft_strcat(char *dest, char *str);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memset(void *str, int c, size_t n);
+char	*ft_strdup(const char *s);
+
 
 #endif

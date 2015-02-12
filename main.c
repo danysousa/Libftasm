@@ -6,28 +6,14 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/11 17:29:38 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/12 14:12:44 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <strings.h>
-
-void	ft_bzero(void *s, size_t len);
-int		ft_isdigit(int i);
-int		ft_isalpha(int i);
-int		ft_isalnum(int i);
-int		ft_isascii(int i);
-int		ft_isprint(int i);
-int		ft_toupper(int i);
-int		ft_tolower(int i);
-int		ft_strlen(char *str);
-int		ft_puts(char *str);
-char	*ft_strcat(char *dest, char *str);
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-void	*ft_memset(void *str, int c, size_t n);
-char	*ft_strdup(const char *s);
+#include "libfts.h"
 
 int main()
 {
@@ -41,10 +27,10 @@ int main()
 	char		*str;
 
 	str = ft_strdup("This is string.h library function");
-	puts(str);
+	ft_puts(str);
 
 	ft_memset(str,'$',7);
-	puts(str);
+	// puts(str);
 
 	test = malloc(sizeof(char) * 50);
 	str1 = malloc(sizeof(char) * 9);
