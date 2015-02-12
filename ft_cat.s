@@ -1,6 +1,6 @@
 section .bss
 
-%define BUFF_SIZE 2048
+%define BUFF_SIZE 1
 
 buff: resb BUFF_SIZE
 
@@ -14,12 +14,12 @@ _ft_cat:
 	jmp read
 
 read:
-
 	mov rax, 0x2000003
 	mov rdi, r12
 	mov rsi, buff
 	mov rdx, BUFF_SIZE
 	syscall
+	jc return
 
 	cmp rax, 0
 	je return
@@ -40,10 +40,5 @@ read:
 	jmp read
 
 return:
-	mov rdi, buff
-	mov rsi, BUFF_SIZE
-	call _ft_bzero
-	mov rdi, r12
-
 	mov rax, 0
 	ret
