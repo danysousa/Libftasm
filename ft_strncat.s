@@ -1,8 +1,8 @@
 section .text
 
-global _ft_strcat
+global _ft_strncat
 
-_ft_strcat:
+_ft_strncat:
 	xor al, al
 	mov r9, rdi
 
@@ -18,11 +18,15 @@ second_loop:
 	cmp byte [rsi], 0
 	je end
 
+	cmp rdx, 0
+	je end
+
 	mov rax, [rsi]
 	mov [rdi], al
 
 	inc rsi
 	inc rdi
+	dec rdx
 
 	jmp second_loop
 end:

@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/13 12:11:32 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/13 13:34:51 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t		rand_str(char *s, size_t max_size)
 	max_size = rand() % max_size;
 	while (i < max_size)
 	{
-		s[i] = (char)(rand() % 127);
+		s[i] = (char)((rand() % 90) + 30);
 		i++;
 	}
 	s[i] = '\0';
@@ -47,7 +47,7 @@ int main(int ac, char *av[])
 	int			error;
 	char		*str;
 
-	int seed = 201485;
+	int seed = 428645;
 	srand(seed);
 
 	ft_puts("********** Tests de la libfts **********\n   Cette chaine s'affiche avec ft_puts\n");
@@ -83,8 +83,6 @@ int main(int ac, char *av[])
 	s_cat2 = malloc(sizeof(char) * 50);
 	test1 = malloc(sizeof(char) * 100);
 	test2 = malloc(sizeof(char) * 100);
-
-
 	i = 0;
 	while ( i < 1000000 )
 	{
@@ -94,7 +92,7 @@ int main(int ac, char *av[])
 		test2 = strcpy(test2, s_cat1);
 
 		test1 = ft_strcat(test1, s_cat2);
-		test2 = ft_strcat(test2, s_cat2);
+		test2 = strcat(test2, s_cat2);
 
 		if (strcmp(test1, test2))
 			error++;
@@ -298,6 +296,39 @@ int main(int ac, char *av[])
 	else
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> strdup\n");
+
+	ft_puts("\n********** Tests fonction bonus **********\n");
+
+	error = 0;
+	s_cat1 = malloc(sizeof(char) * 50);
+	s_cat2 = malloc(sizeof(char) * 50);
+	test1 = malloc(sizeof(char) * 100);
+	test2 = malloc(sizeof(char) * 100);
+	i = 0;
+	while ( i < 1000000 )
+	{
+		bzero(test1, 100);
+		bzero(test2, 100);
+		bzero(s_cat1, 50);
+		bzero(s_cat2, 50);
+
+		rand_str(s_cat1, 50);
+		size = rand_str(s_cat2, 50);
+		test1 = strcpy(test1, s_cat1);
+		test2 = strcpy(test2, s_cat1);
+
+		test1 = ft_strncat(test1, s_cat2, (size_t)(size + i) % 50);
+		test2 = strncat(test2, s_cat2, (size_t)(size + i) % 50);
+
+		if (strcmp(test1, test2))
+			error++;
+		i++;
+	}
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> strncat\n");
 
 
 	ft_puts("\n********** Tests de ft_cat **********\n");
