@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/13 15:15:06 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/13 16:34:37 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 #include "libfts.h"
 #include <fcntl.h>
 
+/*
+** Generation string random
+*/
 size_t		rand_str(char *s, size_t max_size)
 {
 	int		i;
@@ -38,6 +41,9 @@ int main(int ac, char *av[])
 	char		*str2;
 	char		*test1;
 	char		*test2;
+	char		*test3;
+	char		*test4;
+	char		*test5;
 	char		*s_cat1;
 	char		*s_cat2;
 	int			i;
@@ -51,6 +57,10 @@ int main(int ac, char *av[])
 	srand(seed);
 
 	ft_puts("********** Tests de la libfts **********\n   Cette chaine s'affiche avec ft_puts\n");
+
+	/*
+	** Test bzero
+	*/
 
 	str1 = malloc(sizeof(char) * 9);
 	str2 = malloc(sizeof(char) * 9);
@@ -78,6 +88,12 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> bzero\n");
 
+
+	/*
+	** Test Strcat :
+	** Generation de 100000 de string differentes et concatenation,
+	** comparaison avec la fonction de la libc
+	*/
 	error = 0;
 	s_cat1 = malloc(sizeof(char) * 50);
 	s_cat2 = malloc(sizeof(char) * 50);
@@ -105,6 +121,10 @@ int main(int ac, char *av[])
 	printf("-----> strcat\n");
 
 
+	/*
+	** Test isalpha :
+	** Test avec des valeurs variant de -700000 a 2900000
+	*/
 	i = -700000;
 	error = 0;
 	while ( i <= 2900000 )
@@ -119,6 +139,11 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> isalpha\n");
 
+
+	/*
+	** Test isdigit :
+	** Test avec des valeurs variant de -700000 a 2900000
+	*/
 	i = -700000;
 	error = 0;
 	while ( i <= 2900000 )
@@ -133,6 +158,11 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> isdigit\n");
 
+
+	/*
+	** Test isalnum :
+	** Test avec des valeurs variant de -700000 a 2900000
+	*/
 	i = -700000;
 	error = 0;
 	while ( i <= 2900000 )
@@ -147,6 +177,11 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> isalnum\n");
 
+
+	/*
+	** Test isascii :
+	** Test avec des valeurs variant de -700000 a 2900000
+	*/
 	i = -700000;
 	error = 0;
 	while ( i <= 2900000 )
@@ -161,6 +196,11 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> isascii\n");
 
+
+	/*
+	** Test isprint :
+	** Test avec des valeurs variant de -700000 a 2900000
+	*/
 	i = -700000;
 	error = 0;
 	while ( i <= 2900000 )
@@ -175,6 +215,11 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> isprint\n");
 
+
+	/*
+	** Test toupper :
+	** Test avec des valeurs variant de -700000 a 2900000
+	*/
 	i = -700000;
 	error = 0;
 	while ( i <= 2900000 )
@@ -189,6 +234,11 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> toupper\n");
 
+
+	/*
+	** Test tolower :
+	** Test avec des valeurs variant de -700000 a 2900000
+	*/
 	i = -700000;
 	error = 0;
 	while ( i <= 250 )
@@ -205,6 +255,12 @@ int main(int ac, char *av[])
 	free(s_cat1);
 	free(s_cat2);
 
+
+	/*
+	** Test strlen :
+	** Test avec 1000000 strings genere aleatoirement
+	** comparaison avec la fonction de la libc
+	*/
 	test1 = malloc(sizeof(char) * 50);
 	error = 0;
 	i = 0;
@@ -225,6 +281,12 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> strlen\n");
 
+
+	/*
+	** Test memset :
+	** Test avec 1000000 strings genere aleatoirement et des size variable
+	** comparaison avec la fonction de la libc
+	*/
 	test1 = malloc(sizeof(char) * 50);
 	test2 = malloc(sizeof(char) * 50);
 	error = 0;
@@ -250,32 +312,50 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> memset\n");
 
+
+	/*
+	** Test memcpy :
+	** Test avec 1000000 strings genere aleatoirement
+	** comparaison avec la fonction de la libc
+	*/
 	test1 = malloc(sizeof(char) * 50);
 	test2 = malloc(sizeof(char) * 50);
+	test3 = malloc(sizeof(char) * 50);
 	error = 0;
 	i = 0;
 	while ( i < 1000000 )
 	{
 		bzero(test1, 50);
 		bzero(test2, 50);
+		bzero(test3, 50);
 
 		size = rand_str(test1, 50);
-		test2 = ft_memcpy(test2, test1, size);
-		test1 = memcpy(test1, test1, size);
+		test4 = ft_memcpy(test2, test1, size);
+		test5 = memcpy(test3, test1, size);
 
-		if (strcmp(test1, test2))
+		if (strcmp(test3, test2))
+			error++;
+
+		if (strcmp(test4, test5))
 			error++;
 
 		i++;
 	}
 	free(test1);
 	free(test2);
+	free(test3);
 	if (error)
 		printf("\033[31m%d Error found \033[0m", error);
 	else
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> memcpy\n");
 
+
+	/*
+	** Test strdup :
+	** Test avec 1000000 strings genere aleatoirement
+	** comparaison avec la string source
+	*/
 	test1 = malloc(sizeof(char) * 50);
 	error = 0;
 	i = 0;
@@ -297,8 +377,16 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> strdup\n");
 
+
 	ft_puts("\n********** Tests fonction bonus **********\n");
 
+
+
+	/*
+	** Test strncat :
+	** Test avec 1000000 strings genere aleatoirement et size variable
+	** comparaison avec la fonction de la libc
+	*/
 	error = 0;
 	s_cat1 = malloc(sizeof(char) * 50);
 	s_cat2 = malloc(sizeof(char) * 50);
@@ -330,7 +418,17 @@ int main(int ac, char *av[])
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> strncat\n");
 
+	free(s_cat1);
+	free(s_cat2);
+	free(test1);
+	free(test2);
 
+
+	/*
+	** Test memchr :
+	** Test sur une string genere aleatoirement sur tout les caractere possible
+	** comparaison avec la fonction de la libc
+	*/
 	char *c;
 	char *d;
 	i = 1;
@@ -354,6 +452,127 @@ int main(int ac, char *av[])
 	printf("-----> memchr\n");
 
 
+
+	/*
+	** Test islower :
+	** Test avec des valeurs variant de -700000 a 25000
+	** comparaison avec la fonction de la libc
+	*/
+	i = -700000;
+	error = 0;
+	while ( i <= 25000 )
+	{
+		if (ft_islower(i) != islower(i))
+			error++;
+		i++;
+	}
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> islower\n");
+
+
+
+	/*
+	** Test isupper :
+	** Test avec des valeurs variant de -700000 a 25000
+	** comparaison avec la fonction de la libc
+	*/
+	i = -700000;
+	error = 0;
+	while ( i <= 250 )
+	{
+		if (ft_isupper(i) != isupper(i))
+			error++;
+		i++;
+	}
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> isupper\n");
+
+
+
+	/*
+	** Test strcpy :
+	** Test avec 1000000 strings genere aleatoirement
+	** comparaison avec la fonction de la libc
+	*/
+	test1 = malloc(sizeof(char) * 50);
+	test2 = malloc(sizeof(char) * 50);
+	error = 0;
+	i = 0;
+	while ( i < 1000000 )
+	{
+		bzero(test1, 50);
+		bzero(test2, 50);
+
+		size = rand_str(test1, 50);
+		test2 = ft_strcpy(test2, test1);
+		test1 = strcpy(test1, test1);
+
+		if (strcmp(test1, test2))
+			error++;
+
+		i++;
+	}
+	free(test1);
+	free(test2);
+
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> strcpy\n");
+
+
+
+	/*
+	** Test strncpy :
+	** Test avec 1000000 strings genere aleatoirement size variable
+	** comparaison avec la fonction de la libc
+	*/
+	test1 = malloc(sizeof(char) * 50);
+	test2 = malloc(sizeof(char) * 50);
+	test3 = malloc(sizeof(char) * 50);
+	error = 0;
+	i = 0;
+	while ( i < 1000000 )
+	{
+		bzero(test1, 50);
+		bzero(test2, 50);
+		bzero(test3, 50);
+
+		size = rand_str(test1, 50);
+		test4 = ft_strncpy(test2, test1, size);
+		test5 = strncpy(test3, test1, size);
+
+		if (strcmp(test2, test3))
+			error++;
+
+		if (strcmp(test4, test5))
+			error++;
+
+		i++;
+	}
+	free(test1);
+	free(test2);
+	free(test3);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> strncpy\n");
+
+
+
+	/*
+	** Test cat :
+	** Test avec fichier + file descriptor non existant et sortie standard
+	** comparaison avec la fonction de la libc
+	*/
 	ft_puts("\n********** Tests de ft_cat **********\n");
 	fd = open("mytest", O_RDONLY);
 	ft_cat(fd);
@@ -362,7 +581,7 @@ int main(int ac, char *av[])
 	ft_cat(4651);
 	ft_cat(-42);
 
-	ft_puts("\n\n\033[34mft_cat lis maintenant l'entré standard, vous pouvez quitter avec ctrl+D\033[0m");
+	ft_puts("\n\n\033[34mft_cat lit maintenant l'entree standard, vous pouvez quitter avec ctrl+D\033[0m");
 	ft_cat(0);
 	return 0;
 }

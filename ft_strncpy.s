@@ -1,7 +1,7 @@
 section .text
-global _ft_memcpy
+global _ft_strncpy
 
-_ft_memcpy:
+_ft_strncpy:
 	xor al, al
 
 	mov rcx, rdx

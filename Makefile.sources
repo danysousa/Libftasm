@@ -15,3 +15,7 @@ SRC_LIB =		ft_bzero.s	 \
 				ft_strdup.s	 \
 				ft_cat.s	 \
 				ft_memchr.s	 \
+				ft_isupper.s \
+				ft_islower.s \
+				ft_strcpy.s	 \
+				ft_strncpy.s \
