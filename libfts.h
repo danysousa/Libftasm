@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/11 14:06:37 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/13 13:21:25 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/13 15:14:46 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memset(void *str, int c, size_t n);
 char	*ft_strdup(const char *s);
 void	ft_cat(int fd);
+void 	*ft_memchr(const void *s, int c, size_t n);
 
 
 #endif

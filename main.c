@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/13 13:34:51 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/13 15:15:06 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -329,6 +329,29 @@ int main(int ac, char *av[])
 	else
 		printf("\033[32mAll OK \033[0m");
 	printf("-----> strncat\n");
+
+
+	char *c;
+	char *d;
+	i = 1;
+	error = 0;
+	while (i < 126)
+	{
+		c = memchr(test1, i, 50);
+		d = ft_memchr(test1, i, 50);
+
+		if ( d != c )
+			error++;
+		else if ( (c != NULL && d != NULL) && strcmp(c, d) )
+			error++;
+
+		i++;
+	}
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> memchr\n");
 
 
 	ft_puts("\n********** Tests de ft_cat **********\n");
