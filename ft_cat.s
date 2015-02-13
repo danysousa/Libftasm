@@ -1,11 +1,10 @@
 section .bss
 
-%define BUFF_SIZE 1
+%define BUFF_SIZE 1024
 
 buff: resb BUFF_SIZE
 
 section .text
-extern _ft_bzero
 
 global _ft_cat
 
@@ -19,14 +18,8 @@ read:
 	mov rsi, buff
 	mov rdx, BUFF_SIZE
 	syscall
+
 	jc return
-
-	cmp rax, 0
-	je return
-	jle return
-
-	test rax, rax
-	je return
 
 	cmp rax, 0
 	jle return

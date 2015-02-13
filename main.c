@@ -6,7 +6,7 @@
 /*   By: dsousa <dsousa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/03 12:04:22 by dsousa            #+#    #+#             */
-/*   Updated: 2015/02/12 18:50:36 by dsousa           ###   ########.fr       */
+/*   Updated: 2015/02/13 12:11:32 by dsousa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,42 @@
 #include "libfts.h"
 #include <fcntl.h>
 
-int main()
+size_t		rand_str(char *s, size_t max_size)
+{
+	int		i;
+
+	i = 0;
+	max_size = rand() % max_size;
+	while (i < max_size)
+	{
+		s[i] = (char)(rand() % 127);
+		i++;
+	}
+	s[i] = '\0';
+
+	return (max_size);
+}
+
+int main(int ac, char *av[])
 {
 	char		*str1;
 	char		*str2;
-	char		*test;
+	char		*test1;
+	char		*test2;
+	char		*s_cat1;
+	char		*s_cat2;
 	int			i;
-	int			error;
 	int			fd;
-
-
+	size_t		size;
+	int			j;
+	int			error;
 	char		*str;
 
-	str = ft_strdup("This is string.h library function");
-	ft_puts(str);
+	int seed = 201485;
+	srand(seed);
 
-	ft_memset(str,'$',7);
+	ft_puts("********** Tests de la libfts **********\n   Cette chaine s'affiche avec ft_puts\n");
 
-	test = malloc(sizeof(char) * 50);
 	str1 = malloc(sizeof(char) * 9);
 	str2 = malloc(sizeof(char) * 9);
 	i = 49;
@@ -41,34 +59,11 @@ int main()
 	{
 		str1[i - 49] = (char)i;
 		str2[i - 49] = (char)i;
-		test[i - 49] = (char)i;
 		i++;
 	}
 
-	printf("%s\n", test);
-	test = ft_strcat(test, str1);
-	printf("%s\n", test);
-	// test = strcat(test, str1);
-	// printf("%s\n", test);
-	test = ft_memcpy(test, "aaass", 5);
-	puts(test);
-
-	error = 0;
-	if ( ft_strlen(str1) != strlen(str1) )
-	{
-		printf("ft: %d != %d\n", ft_strlen(str1), strlen(str1) );
-		error++;
-	}
-
-	printf("%d Error found -----> strlen\n", error);
-
-	ft_puts(str1);
-	ft_puts("\n");
-	puts(str1);
-
 	ft_bzero((void *)str1, 5);
 	bzero((void *)str2, 5);
-
 	error = 0;
 	i = 0;
 	while (i < 10)
@@ -77,70 +72,126 @@ int main()
 			error++;
 		i++;
 	}
-	printf("%d Error found -----> bzero\n", error);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> bzero\n");
 
-	i = -70;
 	error = 0;
-	while ( i <= 290 )
+	s_cat1 = malloc(sizeof(char) * 50);
+	s_cat2 = malloc(sizeof(char) * 50);
+	test1 = malloc(sizeof(char) * 100);
+	test2 = malloc(sizeof(char) * 100);
+
+
+	i = 0;
+	while ( i < 1000000 )
+	{
+		rand_str(s_cat1, 50);
+		rand_str(s_cat2, 50);
+		test1 = strcpy(test1, s_cat1);
+		test2 = strcpy(test2, s_cat1);
+
+		test1 = ft_strcat(test1, s_cat2);
+		test2 = ft_strcat(test2, s_cat2);
+
+		if (strcmp(test1, test2))
+			error++;
+		i++;
+	}
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> strcat\n");
+
+
+	i = -700000;
+	error = 0;
+	while ( i <= 2900000 )
 	{
 		if (ft_isalpha(i) != isalpha(i))
 			error++;
 		i++;
 	}
-	printf("%d Error found -----> isalpha\n", error);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> isalpha\n");
 
-	i = -70;
+	i = -700000;
 	error = 0;
-	while ( i <= 290 )
+	while ( i <= 2900000 )
 	{
 		if (ft_isdigit(i) != isdigit(i))
 			error++;
 		i++;
 	}
-	printf("%d Error found -----> isdigit\n", error);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> isdigit\n");
 
-	i = -70;
+	i = -700000;
 	error = 0;
-	while ( i <= 290 )
+	while ( i <= 2900000 )
 	{
 		if (ft_isalnum(i) != isalnum(i))
 			error++;
 		i++;
 	}
-	printf("%d Error found -----> isalnum\n", error);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> isalnum\n");
 
-	i = -50;
+	i = -700000;
 	error = 0;
-	while ( i <= 250 )
+	while ( i <= 2900000 )
 	{
 		if (ft_isascii(i) != isascii(i))
 			error++;
 		i++;
 	}
-	printf("%d Error found -----> isascii\n", error);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> isascii\n");
 
-
-	i = -50;
+	i = -700000;
 	error = 0;
-	while ( i <= 250 )
+	while ( i <= 2900000 )
 	{
 		if (ft_isprint(i) != isprint(i))
 			error++;
 		i++;
 	}
-	printf("%d Error found -----> isprint\n", error);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> isprint\n");
 
-	i = -50;
+	i = -700000;
 	error = 0;
-	while ( i <= 250 )
+	while ( i <= 2900000 )
 	{
 		if (ft_toupper(i) != toupper(i))
 			error++;
 		i++;
 	}
-	printf("%d Error found -----> toupper\n", error);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> toupper\n");
 
-	i = -50;
+	i = -700000;
 	error = 0;
 	while ( i <= 250 )
 	{
@@ -148,15 +199,116 @@ int main()
 			error++;
 		i++;
 	}
-	printf("%d Error found -----> tolower\n", error);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> tolower\n");
+	free(s_cat1);
+	free(s_cat2);
+
+	test1 = malloc(sizeof(char) * 50);
+	error = 0;
+	i = 0;
+	while ( i < 1000000 )
+	{
+		rand_str(test1, 50);
+
+		if (strlen(test1) != ft_strlen(test1))
+			error++;
+
+		memset(test1, 0, 50);
+		i++;
+	}
+	free(test1);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> strlen\n");
+
+	test1 = malloc(sizeof(char) * 50);
+	test2 = malloc(sizeof(char) * 50);
+	error = 0;
+	i = 0;
+	while ( i < 1000000 )
+	{
+		bzero(test1, 50);
+		bzero(test2, 50);
+
+		test2 = ft_memset(test2, i, 50 - (i % 50) + 1);
+		test1 = memset(test1, i, 50 - (i % 50) + 1);
+
+		if (strcmp(test1, test2))
+			error++;
+
+		i++;
+	}
+	free(test1);
+	free(test2);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> memset\n");
+
+	test1 = malloc(sizeof(char) * 50);
+	test2 = malloc(sizeof(char) * 50);
+	error = 0;
+	i = 0;
+	while ( i < 1000000 )
+	{
+		bzero(test1, 50);
+		bzero(test2, 50);
+
+		size = rand_str(test1, 50);
+		test2 = ft_memcpy(test2, test1, size);
+		test1 = memcpy(test1, test1, size);
+
+		if (strcmp(test1, test2))
+			error++;
+
+		i++;
+	}
+	free(test1);
+	free(test2);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> memcpy\n");
+
+	test1 = malloc(sizeof(char) * 50);
+	error = 0;
+	i = 0;
+	while ( i < 1000000 )
+	{
+		rand_str(test1, 50);
+		test2 = ft_strdup(test1);
+
+		if (strcmp(test1, test2))
+			error++;
+
+		free(test2);
+		i++;
+	}
+	free(test1);
+	if (error)
+		printf("\033[31m%d Error found \033[0m", error);
+	else
+		printf("\033[32mAll OK \033[0m");
+	printf("-----> strdup\n");
 
 
+	ft_puts("\n********** Tests de ft_cat **********\n");
 	fd = open("mytest", O_RDONLY);
 	ft_cat(fd);
-
 	close(fd);
 
 	ft_cat(4651);
+	ft_cat(-42);
+
+	ft_puts("\n\n\033[34mft_cat lis maintenant l'entré standard, vous pouvez quitter avec ctrl+D\033[0m");
 	ft_cat(0);
 	return 0;
 }
